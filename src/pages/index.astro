@@ -1,6 +1,10 @@
 ---
+import '@/styles/globals.css'
+import { Button } from "@/components/ui/button"
+import Navbar from '@/components/Navbar.astro'
 
 ---
+
 
 <html lang="en">
 	<head>
@@ -11,6 +15,8 @@
 		<title>Astro</title>
 	</head>
 	<body>
+		<Navbar />
 		<h1>Astro</h1>
+		<Button variant="destructive">Hello World</Button>
 	</body>
 </html>

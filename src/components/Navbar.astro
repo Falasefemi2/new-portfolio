@@ -1,0 +1,40 @@
+---
+import { MobileMenu } from "./MobileMenu";
+import { Navigation } from "./NavigationLink";
+import { Button } from "./ui/button";
+
+
+ export const navItems = [
+      {
+        name: "Home",
+        href: "/"
+      },
+      {
+        name: "Projects",
+        href: "/project"
+      },
+    ];
+---
+
+  
+
+<nav class=" max-w-7xl mx-auto  px-4 md:px-8 py-5 grid grid-cols-12">
+    <div class=" col-span-6 flex md:col-span-3">
+        <a href="/">
+        <h1 class=" text-3xl font-semibold">
+            Falase <span class=" text-blue-500">Femi</span>
+        </h1>
+        </a>
+    </div>
+
+    <div class="hidden sm:flex justify-center items-center col-span-6">
+      <Navigation data={navItems} client:idle  />
+    </div>
+
+    <div class=" flex items-center justify-end  md:col-span-3 col-span-6">
+      <Button className="hidden sm:block">Contact Me</Button>
+      <div class="sm:hidden">
+        <MobileMenu  client:idle />
+      </div>
+    </div>
+</nav>
