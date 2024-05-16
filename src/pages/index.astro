@@ -3,6 +3,10 @@
 import '@/styles/globals.css'
 import { Button } from "@/components/ui/button"
 import Navbar from '@/components/Navbar.astro'
+import { getProjects } from '../utils/sanity'; // Import the getProjects function
+
+
+const projects = await getProjects();
 
 ---
 
@@ -19,5 +23,16 @@ import Navbar from '@/components/Navbar.astro'
 		<Navbar />
 		<h1>Astro</h1>
 		<Button variant="destructive">Hello World</Button>
+		<ul>
+			{projects.map((project) => (
+			  <li>
+				<h2>{project.title}</h2>
+				<p>{project.description}</p>
+				<img src={project.image.url} alt={project.title} />
+				<a href={project.link}>View Project</a>
+				<p>Tags: {project.tags.join(', ')}</p>
+			  </li>
+			))}
+		  </ul>
 	</body>
 </html>
