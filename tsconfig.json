@@ -1,18 +1,6 @@
-// {
-//   "extends": "astro/tsconfigs/strict",
-//   "compilerOptions": {
-//     "baseUrl": ".",
-//     "paths": {
-//       "@/*": [
-//         "./src/*"
-//       ]
-//     },
-//     "jsx": "react-jsx",
-//     "jsxImportSource": "react"
-//   }
-// }
-
 {
+  "extends": "astro/tsconfigs/strict",
+  "esModuleInterop": true, // Add this line
   "compilerOptions": {
     "jsx": "react",
     // ...

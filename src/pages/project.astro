@@ -3,7 +3,11 @@
 import '@/styles/globals.css'
 
 import Layout from '@/layouts/Layout.astro';
+import { getProjects } from '../utils/sanity'; // Import the getProjects function
+import SanityImage from '@/SanityImage.astro';
 
+
+const projects = await getProjects();
 
 
 
@@ -14,7 +18,15 @@ import Layout from '@/layouts/Layout.astro';
         <section class=" max-w-7xl w-full px-4 md:px-8 mx-auto">
             <h1 class=" text-4xl font-semibold lg:text-5xl pt-5">Projects</h1>
             <p class=" leading-7 text-muted-foreground pt-2">Check out what projects i have created</p>
-
+              <div class="py-12 grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 grid-col-1">
+                {projects.map((project: { link: string | URL | null | undefined; imageUrl: string | null | undefined; }) => (
+                    <a href={project.link} class="group  block" target="_blank">
+                        <div class="aspect-w-16 aspect-h-12 overflow-hidden rounded-2xl relative">
+                            <SanityImage node={{ asset: { url: project.imageUrl } }} width="600" />
+                        </div>
+                    </a>
+                ))}
+              </div>
         </section>
     </body>
 </Layout>
