@@ -9,8 +9,6 @@ import SanityImage from '@/SanityImage.astro';
 
 const projects = await getProjects();
 
-
-
 ---
 
 <Layout title="Falase Femi Portfolio.">
@@ -19,10 +17,20 @@ const projects = await getProjects();
             <h1 class=" text-4xl font-semibold lg:text-5xl pt-5">Projects</h1>
             <p class=" leading-7 text-muted-foreground pt-2">Check out what projects i have created</p>
               <div class="py-12 grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 grid-col-1">
-                {projects.map((project: { link: string | URL | null | undefined; imageUrl: string | null | undefined; }) => (
+                {projects.map((project: { link: string | URL | null | undefined; imageUrl: string | null | undefined; title: string; description: string;   tags: string[];
+                }) => (
                     <a href={project.link} class="group  block" target="_blank">
                         <div class="aspect-w-16 aspect-h-12 overflow-hidden rounded-2xl relative">
-                            <SanityImage node={{ asset: { url: project.imageUrl } }} width="600" />
+                            <SanityImage node={{ asset: { url: project.imageUrl } }} width="600"  />
+                        </div>
+                        <div class="mt-4">
+                            <h2 class="font-medium text-lg">{project.title}</h2>
+                            <p class="mt-1 text-muted-foreground line-clamp-3">{project.description}</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                               {project.tags.map((tagItem) => (
+                                <span class="inline-flex items-center rounded-md bg-primary/10 px-3 py-1.5 text-xs sm:text-sm font-medium text-primary ring-2 ring-inset ring-primary/20">{tagItem}</span>
+                               ))}
+                            </div>
                         </div>
                     </a>
                 ))}
