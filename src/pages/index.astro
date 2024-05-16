@@ -1,9 +1,8 @@
 ---
 
 import '@/styles/globals.css'
-import { Button } from "@/components/ui/button"
-import Navbar from '@/components/Navbar.astro'
-
+import Layout from '@/layouts/Layout.astro'
+import Hero from "../components/Hero.astro"
 
 ---
 
@@ -14,11 +13,13 @@ import Navbar from '@/components/Navbar.astro'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Falase Femi Portolio</title>
 	</head>
-	<body>
-		<Navbar />
-		<h1>Astro</h1>
-		<Button variant="destructive">Hello World</Button>
-	</body>
+	<Layout title="Falase Femi Portfolio.">
+		<body>
+			<div class="max-w-7xl w-full px-4  md:px-8 mx-auto">
+				<Hero />
+			</div>
+		</body>
+	</Layout>
 </html>
