@@ -1,12 +1,11 @@
 ---
-import { MobileMenu } from "./MobileMenu";
-import { Navigation } from "./NavigationLink";
-import { Button } from "./ui/button";
 import { ModeToggle } from '@/components/ModeToggle';
+// import { navItems } from './navItems';
+import { Navigation } from './NavigationLink';
+import { MobileMenu } from './MobileMenu';
+import { Button } from './ui/button';
 
-
-
- export const navItems = [
+export const navItems = [
       {
         name: "Home",
         href: "/"
@@ -16,30 +15,60 @@ import { ModeToggle } from '@/components/ModeToggle';
         href: "/project"
       },
     ];
+
 ---
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falase femi portfolio</title>
+    
   
-
-<nav class=" max-w-7xl mx-auto  px-4 md:px-8 py-5 grid grid-cols-12">
-    <div class=" col-span-6 flex md:col-span-3">
+    <script is:inline>
+      const getThemePreference = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      };
+      const isDark = getThemePreference() === 'dark';
+      document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+    
+      if (typeof localStorage !== 'undefined') {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains('dark');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      }
+    </script>
+    
+ 
+  </head>
+  <body>
+    <nav class="max-w-7xl mx-auto px-4 md:px-8 py-5 grid grid-cols-12">
+      <div class="col-span-6 flex md:col-span-3">
         <a href="/">
-        <h1 class=" text-3xl font-semibold">
-            Falase <span class=" text-blue-500">Femi</span>
-        </h1>
+          <h1 class="text-3xl font-semibold">
+            Falase <span class="text-blue-500">Femi</span>
+          </h1>
         </a>
-    </div>
-
-    <div class="hidden sm:flex justify-center items-center col-span-6">
-      <Navigation data={navItems} client:idle  />
-    </div>
-
-    <div class=" flex items-center justify-end  md:col-span-3 col-span-6 gap-4">
-      <ModeToggle client:idle />
-      <Button className="hidden sm:flex">
-        <a href="mailto:femifalase228@gmail.com">Contact me</a>
-      </Button>
-      <div class="sm:hidden">
-        <MobileMenu  client:idle />
       </div>
-    </div>
-</nav>
+      <div class="hidden sm:flex justify-center items-center col-span-6">
+        <Navigation data={navItems} client:idle />
+      </div>
+      <div class="flex items-center justify-end md:col-span-3 col-span-6 gap-4">
+        <ModeToggle client:idle />
+        <Button className="hidden sm:flex">
+          <a href="mailto:femifalase228@gmail.com">Contact me</a>
+        </Button>
+        <div class="sm:hidden">
+          <MobileMenu client:idle />
+        </div>
+      </div>
+    </nav>
+    <slot></slot>
+  </body>
+</html>
