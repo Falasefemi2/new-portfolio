@@ -73,7 +73,7 @@ const socialMedia = [
 const CardComponent = () => {
     return (
         <>
-            <Card className='bg-gray-100 border-none'>
+            <Card className='bg-primary-foreground border-none'>
                 <CardHeader>
                     <CardTitle>Explore my stack</CardTitle>
                     <CardDescription>Check out the tools i use daily</CardDescription>
@@ -88,7 +88,7 @@ const CardComponent = () => {
                 {socialMedia.map((item) => (
                     <Card
                         key={item.id}
-                        className="p-4 flex flex-col items-center sm:items-start bg-gray-100 border-none"
+                        className="p-4 flex flex-col items-center sm:items-start bg-primary-foreground border-none"
                     >
                         <img src={item.icon.src} alt="Icon" className="w-16 h-16" />
                         <h1 className="text-2xl font-medium pt-3">{item.name}</h1>

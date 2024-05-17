@@ -1,3 +1,6 @@
+import defaultTheme from 'tailwindcss/defaultTheme'
+
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -12,6 +15,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        bangers: ["Bangers", "sans-serif"],
+        "roboto-slab": ["Roboto Slab Variable", "sans"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

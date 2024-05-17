@@ -2,6 +2,8 @@
 import { MobileMenu } from "./MobileMenu";
 import { Navigation } from "./NavigationLink";
 import { Button } from "./ui/button";
+import { ModeToggle } from '@/components/ModeToggle';
+
 
 
  export const navItems = [
@@ -31,8 +33,11 @@ import { Button } from "./ui/button";
       <Navigation data={navItems} client:idle  />
     </div>
 
-    <div class=" flex items-center justify-end  md:col-span-3 col-span-6">
-      <Button className="hidden sm:block">Contact Me</Button>
+    <div class=" flex items-center justify-end  md:col-span-3 col-span-6 gap-4">
+      <ModeToggle client:idle />
+      <Button className="hidden sm:flex">
+        <a href="mailto:femifalase228@gmail.com">Contact me</a>
+      </Button>
       <div class="sm:hidden">
         <MobileMenu  client:idle />
       </div>
