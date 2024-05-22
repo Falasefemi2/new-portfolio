@@ -20,6 +20,9 @@ import go from "../../public/tech-icons/go.svg";
 import css from "../../public/tech-icons/css.svg"
 import { Button } from './ui/button';
 
+
+
+
 const icons = [
     sketch,
     canva,
